@@ -21,13 +21,15 @@ public class Json_Script : MonoBehaviour
         data.ClassText = Class.text;
         data.CourseText = Course.text;
         string json = JsonUtility.ToJson(data, true);
+        // Writing to the File
         File.WriteAllText(Application.dataPath + "/FormatFile.json",json);        
     }
     public void Load()
     {   
+        // Reading From the File
         string json = File.ReadAllText(Application.dataPath + "/FormatFile.json");
         Format data = JsonUtility.FromJson<Format>(json);
-        // Creating Dataset Object
+        // Fetching from Dataset
         Name.text = data.NameText;
         Class.text = data.ClassText;
         Course.text = data.CourseText;
